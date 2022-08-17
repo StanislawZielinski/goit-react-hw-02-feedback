@@ -1,27 +1,39 @@
 import React, { Component } from "react";
 
+
 class Counter extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0
+    good: this.props.initialValue,
+    neutral: this.props.initialValue,
+    bad: this.props.initialValue
   }
 
-  handleChange = (evt) => {
-    evt.preventDefault();
-    console.log("aaa");
+    static defaultProps = {
+    step: 1,
+    initialValue: 0,
   };
-
+  handleChangeGood = (evt) => {
+    evt.preventDefault();
+    this.setState((state, props) => ({good: state.good+this.props.step}))
+  };
+  handleChangeBad = (evt) => {
+    evt.preventDefault();
+    this.setState((state, props) => ({bad: state.bad+this.props.step}))
+  };
+    handleChangeNeutral = (evt) => {
+    evt.preventDefault();
+    this.setState((state, props) => ({neutral: state.neutral+this.props.step}))
+  };
   render() {
     return (
       <div>
-        PLEASE LEAVE FEEDBACK
+        <h3>PLEASE LEAVE FEEDBACK</h3>
         <form>
-          <button className="button" type="click" onClick={this.handleChange}>Good</button>
-          <button className="button" type="click" onClick={this.handleChange}>Bad</button>
-          <button className="button" type="click" onClick={this.handleChange}>Neutral</button>
+          <button className="button" type="click" onClick={this.handleChangeGood}>Good {this.state.good}</button>
+          <button className="button" type="click" onClick={this.handleChangeBad}>Bad {this.state.bad}</button>
+          <button className="button" type="click" onClick={this.handleChangeNeutral}>Neutral { this.state.neutral}</button>
         </form>
-        </div>
+      </div>
     );
   }
 }
