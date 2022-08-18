@@ -5,7 +5,6 @@ class Statistics extends Component {
     render() {
         return (
             <div>
-                <h4>Statistics</h4>
                 <p>Good: {this.props.good}</p>
                 <p>Neutral: {this.props.neutral}</p>
                 <p>Bad: {this.props.bad}</p>
