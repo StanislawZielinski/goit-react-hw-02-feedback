@@ -1,18 +1,9 @@
 import React, { Component } from "react";
-import "./Feedback.css";
-import Statistics from "components/Statistics/Statistics";
-import FeedbackOptions from "components/FeedBackOptions/FeedBackOptions";
 
-class Feedback extends Component {
-    state = {
-        good: this.props.initialValue,
-        neutral: this.props.initialValue,
-        bad: this.props.initialValue
-    }
-    static defaultProps = {
-        step: 1,
-        initialValue: 0,
-    };
+
+class FeedbackOptions extends Component {
+
+
     handleChangeGood = (evt) => {
         evt.preventDefault();
         this.setState((state, props) => ({good: state.good+this.props.step}))
@@ -45,13 +36,7 @@ class Feedback extends Component {
                 <button className="button neutral" type="click" onClick={this.handleChangeNeutral}>Neutral</button>
                 <button className="button bad" type="click" onClick={this.handleChangeBad}>Bad</button>
             </div>
-            <Statistics
-                    good={this.state.good}
-                    neutral={this.state.neutral}
-                    bad={this.state.bad}
-                    total={this.countTotalFeedback()}
-                    positivePercentage={this.countPositiveFeedbackPercentage()}
-                />
+
 
         </div>
         )
@@ -59,4 +44,4 @@ class Feedback extends Component {
     
 }
 
-export default Feedback;
+export default FeedbackOptions;
